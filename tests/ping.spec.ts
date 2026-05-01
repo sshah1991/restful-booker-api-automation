@@ -1,7 +1,7 @@
 import { expect,test } from "playwright/test";
 import { PingController } from "../controllers/PingController";
 
-test("@TC_001: Verify Service Health Check @smoke",async({request})=>{
+test("TC_001: Verify Service Health Check @smoke",async({request})=>{
 
     /* Step 1: Initialize our Controller */
         const pingController = new PingController(request);
