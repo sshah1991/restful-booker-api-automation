@@ -1,4 +1,4 @@
-import { CreateBookingRequest } from "../models/BookingModel";
+import { CreateBookingRequest } from "../models/CreateBookingModel";
 
 export class BookingTestData{
 
@@ -27,19 +27,6 @@ export class BookingTestData{
                 checkout: "2026-01-05"
             },
             additionalneeds: "None"
-        };
-    }
-
-    static getMandatotyFeildMissingPayload(){
-        return{
-            lastname: "Shah",
-            totalprice: 150,
-            depositpaid: true,
-            bookingdates: {
-                checkin: "2026-05-01",
-                checkout: "2026-05-10"
-            },
-            additionalneeds: "Breakfast"
         };
     }
 }

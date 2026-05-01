@@ -1,5 +1,6 @@
 import { BaseController } from "./BaseController";
-import { CreateBookingRequest } from "../models/BookingModel";
+import { CreateBookingRequest } from "../models/CreateBookingModel";
+import { CreateBookingResponse } from "../models/CreateBookingModel";
 
 export class CreateBookingController extends BaseController {
     async createBooking(payload: CreateBookingRequest) {

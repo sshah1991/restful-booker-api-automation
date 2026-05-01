@@ -25,7 +25,3 @@ export interface CreateBookingResponse{
     booking: CreateBookingRequest
 
 }
-
-export interface getAllBookings{
-    bookingid:number
-}
