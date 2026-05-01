@@ -9,8 +9,8 @@ test('TC_002: Generate Auth Token Successfully @smoke', async ({ request }) => {
 
     // Define our credentials using the Model
     const credentials: AuthRequest = {
-        "username": "admin",
-        "password": "password123"
+        username: "admin",
+        password: "password123"
     };
 
     // 1. Send POST request
@@ -31,7 +31,7 @@ test('TC_002: Generate Auth Token Successfully @smoke', async ({ request }) => {
 
 })
 
-test.only('TC_003: Login Failure--Invalid credentials @Regression', async ({ request }) => {
+test('TC_003: Login Failure--Invalid credentials @Regression', async ({ request }) => {
     const authController = new AuthController(request)
 
     //define the credentials
