@@ -20,7 +20,7 @@ test('Basic API Call: Verify Health Check--Singel file',async({request})=>{
   
 })
 
-test.only('Manual Auth Token Generation - Single File',async({request})=>{
+test('Manual Auth Token Generation - Single File',async({request})=>{
   const authPayload = {
     username: "admin",
     password: "password123"
