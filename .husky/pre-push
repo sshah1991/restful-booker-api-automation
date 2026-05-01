@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🚀 Running Smoke Tests before pushing to GitHub..."
+
+# Run only tests tagged with @smoke
+npx playwright test --grep @smoke
+
+# Capture the result of the test run
+if [ $? -ne 0 ]; then
+  echo "❌ Smoke tests failed! Push aborted. Please fix the tests before pushing."
+  exit 1
+fi
+
+echo "✅ Smoke tests passed! Proceeding with push..."
