@@ -8,4 +8,7 @@ export class GetBookingController extends BaseController{
     async getSingleBooking(id: number){
         return this.request.get(`/booking/${id}`)
     }
+    async getBookingByFirstName(fname: string){
+        return  this.request.get(`/booking?firstname=${fname}`)
+    }
 }
