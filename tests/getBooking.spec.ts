@@ -16,7 +16,7 @@ test('TC_007: List All Bookings Successfully @sanity', async ({ request }) => {
     expect(responseJSON[0]).toBeDefined()
 })
 
-test.only('TC_008: Retrieve Specific Record Successfully @sanity', async ({ request }) => {
+test('TC_008: Retrieve Specific Record Successfully @sanity', async ({ request }) => {
     const createBookingControler= new CreateBookingController(request)
     const createPayload= BookingTestData.getValidBookingPayload()
     const createBookingResponse= await createBookingControler.createBooking(createPayload)
