@@ -17,22 +17,32 @@ test('TC_007: List All Bookings Successfully @sanity', async ({ request }) => {
 })
 
 test('TC_008: Retrieve Specific Record Successfully @sanity', async ({ request }) => {
-    const createBookingControler= new CreateBookingController(request)
-    const createPayload= BookingTestData.getValidBookingPayload()
-    const createBookingResponse= await createBookingControler.createBooking(createPayload)
-    
-    
-    const createBookingResponseJSON: CreateBookingResponse=await createBookingResponse.json()
-    console.log(createBookingResponseJSON)
-    const booking_id=createBookingResponseJSON.bookingid
+    const createBookingControler = new CreateBookingController(request)
+    const createPayload = BookingTestData.getValidBookingPayload()
+    const createBookingResponse = await createBookingControler.createBooking(createPayload)
 
-    const getBookingController= new GetBookingController(request)
-    const response_singleBooking=await getBookingController.getSingleBooking(booking_id)
+
+    const createBookingResponseJSON: CreateBookingResponse = await createBookingResponse.json()
+    console.log(createBookingResponseJSON)
+    const booking_id = createBookingResponseJSON.bookingid
+
+    const getBookingController = new GetBookingController(request)
+    const response_singleBooking = await getBookingController.getSingleBooking(booking_id)
     await expect(response_singleBooking.status()).toBe(200)
 
-    const response_singleBooking_JSON: CreateBookingRequest= await response_singleBooking.json()
+    const response_singleBooking_JSON: CreateBookingRequest = await response_singleBooking.json()
     console.log(response_singleBooking_JSON)
     await expect(response_singleBooking_JSON.firstname).toBe(createPayload.firstname)
+})
 
+test('TC_009: Invalid ID Search Successfully @regression',async({request})=>{
+    const getBookingController= new GetBookingController(request)
+
+    const response=await getBookingController.getSingleBooking(12311)
+    expect(response.status()).toBe(404)
+
+    const responsetext= await response.text()
+    console.log(responsetext)
+    
 
 })
