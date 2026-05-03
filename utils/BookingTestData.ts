@@ -42,4 +42,19 @@ export class BookingTestData{
             additionalneeds: "Breakfast"
         };
     }
+
+    static PUTValidBookingUpdatePayload(): CreateBookingRequest{
+        return{
+            firstname: "Abla",
+            lastname: "Tabla",
+            totalprice: 150,
+            depositpaid: true,
+            bookingdates: {
+                checkin: "2026-05-01",
+                checkout: "2026-05-10"
+            },
+            additionalneeds: "Breakfast"
+        };
+    }
+
 }
