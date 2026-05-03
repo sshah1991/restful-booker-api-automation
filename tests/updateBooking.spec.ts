@@ -1,44 +1,70 @@
-import { UpdateBookingController } from "../controllers/UpdateBookingController";
+import { test, expect } from "@playwright/test";
 import { AuthController } from "../controllers/AuthController";
 import { CreateBookingController } from "../controllers/CreateBookingController";
-import { PutUpdate } from "../models/UpdateModel";
-import { expect, Expect,request,test } from "playwright/test";
-import { AuthRequest } from "../models/AuthModel";
-import { AuthResponse } from "../models/AuthModel";
-import { CreateBookingRequest } from "../models/BookingModel";
+import { UpdateBookingController } from "../controllers/UpdateBookingController";
+import { AuthRequest, AuthResponse } from "../models/AuthModel";
+import { CreateBookingRequest, CreateBookingResponse } from "../models/BookingModel";
 import { BookingTestData } from "../utils/BookingTestData";
-import { CreateBookingResponse } from "../models/BookingModel";
+import { PutUpdate } from "../models/UpdateModel";
 
+test.describe('Booking Update Operations', () => {
+    // Variables declared in the describe scope so they are accessible to all tests
+    let token: string;
+    let bookingID: number;
 
-test.only('TC_012: Full Update (PUT) Successfully @sanity',async({request})=>{
-    const authBookingController= new AuthController(request)
-    // Define our credentials using the Model
-    const credentials: AuthRequest = {
-        username: "admin",
-        password: "password123"
-    };
-    const authBookingController_response= await authBookingController.createToken(credentials)
-    expect(authBookingController_response.status()).toBe(200)
-    const authBookingController_response_JSON: AuthResponse=await authBookingController_response.json()
-    const token= authBookingController_response_JSON.token
-    console.log(token)
+    /**
+     * Runs before each test case to provide a fresh token and booking
+     */
+    test.beforeEach(async ({ request }) => {
+        // 1. Setup Auth
+        const authController = new AuthController(request);
+        const credentials: AuthRequest = {
+            username: "admin",
+            password: "password123"
+        };
+        const authResponse = await authController.createToken(credentials);
+        const authJSON: AuthResponse = await authResponse.json();
+        token = authJSON.token;
 
-    //Now create the booking
-    const createBookingController= new CreateBookingController(request)
-    const payload: CreateBookingRequest= BookingTestData.PUTValidBookingUpdatePayload()
-    const createBookingResponse= await createBookingController.createBooking(payload)
-    await expect(createBookingResponse.status()).toBe(200)
-    const createBookingResponse_JSON:CreateBookingResponse = await createBookingResponse.json()
-    const bookingID= createBookingResponse_JSON.bookingid
-    console.log(bookingID)
+        // 2. Setup initial data (Create a booking to be updated)
+        const createController = new CreateBookingController(request);
+        const initialPayload: CreateBookingRequest = BookingTestData.getValidBookingPayload();
+        const createResponse = await createController.createBooking(initialPayload);
+        const createJSON: CreateBookingResponse = await createResponse.json();
+        
+        bookingID = createJSON.bookingid;
+        console.log(`PRE-CONDITION: Token and Booking ID ${bookingID} initialized.`);
+    });
 
-    const updateBookingController= new UpdateBookingController(request)
-    const updateBookingResponse= await updateBookingController.updateUsingPUT(bookingID,token,payload)
-    expect(updateBookingResponse.status()).toBe(200)
-    const updateBookingResponse_JSON:CreateBookingRequest=await updateBookingResponse.json()
-    expect(updateBookingResponse_JSON.firstname).toBe("Abla")
-    expect(updateBookingResponse_JSON.lastname).toBe("Tabla")
-    console.log(updateBookingResponse_JSON.firstname,updateBookingResponse_JSON.lastname)
+    test.only('TC_012: Full Update (PUT) Successfully @sanity', async ({ request }) => {
+        const updateController = new UpdateBookingController(request);
+        
+        // Use your specific Update Payload
+        const updatePayload: PutUpdate = BookingTestData.PUTValidBookingUpdatePayload();
 
-    
-})
+        // Perform the Update
+        const response = await updateController.updateUsingPUT(bookingID, token, updatePayload);
+        
+        // Assertions
+        expect(response.status()).toBe(200);
+        
+        const responseJSON: CreateBookingRequest = await response.json();
+        expect(responseJSON.firstname).toBe("Abla");
+        expect(responseJSON.lastname).toBe("Tabla");
+        
+        console.log(`VERIFICATION: Booking ${bookingID} updated to ${responseJSON.firstname} ${responseJSON.lastname}`);
+    });
+
+    /**
+     * You can now easily add more tests without repeating the setup!
+     */
+    test('TC_013: Update with Invalid Token should fail @regression', async ({ request }) => {
+        const updateController = new UpdateBookingController(request);
+        const updatePayload = BookingTestData.PUTValidBookingUpdatePayload();
+
+        const response = await updateController.updateUsingPUT(bookingID, "invalid_token_123", updatePayload);
+        
+        // Restful Booker typically returns 403 Forbidden for bad tokens
+        expect(response.status()).toBe(403);
+    });
+});
