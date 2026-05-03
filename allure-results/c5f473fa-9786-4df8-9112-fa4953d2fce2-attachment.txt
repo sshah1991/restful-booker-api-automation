@@ -1,0 +1,15 @@
+****************Executing TC: 'TC_004'************
+Sending POST request to create booking with payload: 
+{
+  "firstname": "Sumeet",
+  "lastname": "Shah",
+  "totalprice": 150,
+  "depositpaid": true,
+  "bookingdates": {
+    "checkin": "2026-05-01",
+    "checkout": "2026-05-10"
+  },
+  "additionalneeds": "Breakfast"
+}
+Response status: 200
+Received booking ID: 2133
