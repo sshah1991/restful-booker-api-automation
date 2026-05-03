@@ -5,8 +5,6 @@ import { BookingTestData } from "../utils/BookingTestData";
 import { CreateBookingResponse } from "../models/BookingModel";
 import test, { expect } from "playwright/test";
 import { CreateBookingRequest } from "../models/BookingModel";
-import { request } from "playwright-extra";
-
 
 test('TC_007: List All Bookings Successfully @sanity', async ({ request }) => {
     const getBookingController = new GetBookingController(request)
@@ -36,24 +34,24 @@ test('TC_008: Retrieve Specific Record Successfully @sanity', async ({ request }
     await expect(response_singleBooking_JSON.firstname).toBe(createPayload.firstname)
 })
 
-test('TC_009: Invalid ID Search Successfully @regression',async({request})=>{
-    const getBookingController= new GetBookingController(request)
+test('TC_009: Invalid ID Search Successfully @regression', async ({ request }) => {
+    const getBookingController = new GetBookingController(request)
 
-    const response=await getBookingController.getSingleBooking(12311)
+    const response = await getBookingController.getSingleBooking(12311)
     expect(response.status()).toBe(404)
 
-    const responsetext= await response.text()
+    const responsetext = await response.text()
     console.log(responsetext)
-    
+
 
 })
 
-test('TC_010: Filter by Guest Name Successfully @regression',async({request})=>{
-    const getBookingController= new GetBookingController(request)
-    const response= await getBookingController.getBookingByFirstName('Sumeet')
+test('TC_010: Filter by Guest Name Successfully @regression', async ({ request }) => {
+    const getBookingController = new GetBookingController(request)
+    const response = await getBookingController.getBookingByFirstName('Sumeet')
     expect(response.status()).toBe(200)
 
-    const responseJSON: getAllBookings[]= await response.json()
+    const responseJSON: getAllBookings[] = await response.json()
     console.log(responseJSON)
     // Verify that at least one result is returned and it contains our ID
     expect(responseJSON.length).toBeGreaterThan(0);
