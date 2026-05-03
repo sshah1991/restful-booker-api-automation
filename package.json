@@ -4,7 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "npx playwright test",
+    "test:smoke": "npx playwright test --grep @smoke",
+    "test:regression": "npx playwright test --grep @regression",
+    "test:sanity": "npx playwright test --grep @sanity",
+    "test:debug": "npx playwright test --debug",
+    "test:ui": "npx playwright test --ui",
+    "report": "npx playwright show-report",
+    "allure:clear": "rm -rf allure-results allure-report",
+    "allure:generate": "npx allure generate allure-results --clean -o allure-report",
+    "allure:open": "npx allure open allure-report",
+    "allure:report": "npm run allure:generate && npm run allure:open"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +24,12 @@
   "devDependencies": {
     "@playwright/test": "^1.59.1",
     "@types/node": "^25.6.0",
+    "allure-commandline": "^2.38.1",
+    "allure-playwright": "^3.7.1",
+    "dotenv": "^17.4.2",
     "husky": "^8.0.0"
+  },
+  "dependencies": {
+    "winston": "^3.19.0"
   }
 }

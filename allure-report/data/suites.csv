@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","2086","TC_016: Delete Booking Successfully @sanity","chromium","2026-05-03","passed","2026-05-03","Delete Operations","deleteBooking.spec.ts","",""
+"","1484","TC_005: Schema Data Integrity Successfully @sanity","chromium","2026-05-03","passed","2026-05-03","","createBooking.spec.ts","",""
+"","762","TC_012: Full Update (PUT) Successfully @sanity","chromium","2026-05-03","passed","2026-05-03","Booking Update Operations","updateBooking.spec.ts","",""
+"","502","TC_008: Retrieve Specific Record Successfully @sanity","chromium","2026-05-03","passed","2026-05-03","","getBooking.spec.ts","",""
+"","724","TC_015: Partial Update (PATCH) Successfully @sanity","chromium","2026-05-03","passed","2026-05-03","Booking Update Operations","updateBooking.spec.ts","",""
+"","745","TC_007: List All Bookings Successfully @sanity","chromium","2026-05-03","passed","2026-05-03","","getBooking.spec.ts","",""

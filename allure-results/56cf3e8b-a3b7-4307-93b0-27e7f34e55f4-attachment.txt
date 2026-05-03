@@ -1,0 +1,5 @@
+****************Executing TC: 'TC_001'************
+Sending GET request to verify service health
+Response received in 320ms
+Response status: 201
+Response body: Created

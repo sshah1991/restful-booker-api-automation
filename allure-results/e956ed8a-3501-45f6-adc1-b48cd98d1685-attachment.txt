@@ -1,0 +1,24 @@
+Sending POST request to generate auth token with credentials: 
+{
+  "username": "admin",
+  "password": "password123"
+}
+Received token: 8cbc9452a217738
+Sending POST request to create initial booking with payload: 
+{
+  "firstname": "Sumeet",
+  "lastname": "Shah",
+  "totalprice": 150,
+  "depositpaid": true,
+  "bookingdates": {
+    "checkin": "2026-05-01",
+    "checkout": "2026-05-10"
+  },
+  "additionalneeds": "Breakfast"
+}
+Created booking ID: 5038
+****************Executing TC: 'TC_016'************
+Sending DELETE request to remove booking ID: 5038
+Response status for DELETE: 201
+Sending GET request to verify deletion of booking ID: 5038
+Response status for GET (should be 404): 404

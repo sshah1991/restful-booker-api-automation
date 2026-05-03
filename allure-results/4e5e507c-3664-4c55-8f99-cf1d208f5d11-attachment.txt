@@ -1,0 +1,45 @@
+Sending POST request to generate auth token with credentials: 
+{
+  "username": "admin",
+  "password": "password123"
+}
+Received token: b99dfd881851cd1
+Sending POST request to create initial booking with payload: 
+{
+  "firstname": "Sumeet",
+  "lastname": "Shah",
+  "totalprice": 150,
+  "depositpaid": true,
+  "bookingdates": {
+    "checkin": "2026-05-01",
+    "checkout": "2026-05-10"
+  },
+  "additionalneeds": "Breakfast"
+}
+Created booking ID: 5051
+****************Executing TC: 'TC_012'************
+Sending PUT request to update booking ID 5051 with payload: 
+{
+  "firstname": "Abla",
+  "lastname": "Tabla",
+  "totalprice": 150,
+  "depositpaid": true,
+  "bookingdates": {
+    "checkin": "2026-05-01",
+    "checkout": "2026-05-10"
+  },
+  "additionalneeds": "Breakfast"
+}
+Response status: 200
+Received updated booking details: 
+{
+  "firstname": "Abla",
+  "lastname": "Tabla",
+  "totalprice": 150,
+  "depositpaid": true,
+  "bookingdates": {
+    "checkin": "2026-05-01",
+    "checkout": "2026-05-10"
+  },
+  "additionalneeds": "Breakfast"
+}

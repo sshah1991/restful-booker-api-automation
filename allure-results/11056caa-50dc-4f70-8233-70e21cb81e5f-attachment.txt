@@ -1,0 +1,7 @@
+Sending POST request to generate auth token with credentials: 
+{
+  "username": "admin",
+  "password": "password123"
+}
+Response status: 200
+Received token: b6b300cd29a2025

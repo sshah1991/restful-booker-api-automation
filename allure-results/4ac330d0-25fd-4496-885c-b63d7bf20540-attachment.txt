@@ -1,0 +1,4 @@
+****************Executing TC: 'TC_007'************
+Sending GET request to fetch all bookings
+Response status: 200
+Received 3485 bookings
