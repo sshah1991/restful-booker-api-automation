@@ -36,7 +36,7 @@ test.describe('Booking Update Operations', () => {
         console.log(`PRE-CONDITION: Token and Booking ID ${bookingID} initialized.`);
     });
 
-    test.only('TC_012: Full Update (PUT) Successfully @sanity', async ({ request }) => {
+    test('TC_012: Full Update (PUT) Successfully @sanity', async ({ request }) => {
         const updateController = new UpdateBookingController(request);
         
         // Use your specific Update Payload
