@@ -34,7 +34,6 @@ test.describe('Booking Update Operations', () => {
         const createJSON: CreateBookingResponse = await createResponse.json();
         
         bookingID = createJSON.bookingid;
-        console.log(`PRE-CONDITION: Token and Booking ID ${bookingID} initialized.`);
     });
 
     test('TC_012: Full Update (PUT) Successfully @sanity', async ({ request }) => {
@@ -53,7 +52,6 @@ test.describe('Booking Update Operations', () => {
         expect(responseJSON.firstname).toBe("Abla");
         expect(responseJSON.lastname).toBe("Tabla");
         
-        console.log(`VERIFICATION: Booking ${bookingID} updated to ${responseJSON.firstname} ${responseJSON.lastname}`);
     });
 
     test('TC_013: Update with Invalid Token should fail @regression', async ({ request }) => {
@@ -74,7 +72,6 @@ test.describe('Booking Update Operations', () => {
 
          const response_JSON: CreateBookingRequest= await response.json()
          expect(response_JSON.firstname).toBe('Babla')
-         console.log(response_JSON.firstname)
 
     })
     

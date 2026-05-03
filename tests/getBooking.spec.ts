@@ -22,7 +22,6 @@ test('TC_008: Retrieve Specific Record Successfully @sanity', async ({ request }
 
 
     const createBookingResponseJSON: CreateBookingResponse = await createBookingResponse.json()
-    console.log(createBookingResponseJSON)
     const booking_id = createBookingResponseJSON.bookingid
 
     const getBookingController = new GetBookingController(request)
@@ -30,7 +29,6 @@ test('TC_008: Retrieve Specific Record Successfully @sanity', async ({ request }
     await expect(response_singleBooking.status()).toBe(200)
 
     const response_singleBooking_JSON: CreateBookingRequest = await response_singleBooking.json()
-    console.log(response_singleBooking_JSON)
     await expect(response_singleBooking_JSON.firstname).toBe(createPayload.firstname)
 })
 
@@ -41,7 +39,6 @@ test('TC_009: Invalid ID Search Successfully @regression', async ({ request }) =
     expect(response.status()).toBe(404)
 
     const responsetext = await response.text()
-    console.log(responsetext)
 
 
 })
@@ -52,7 +49,6 @@ test('TC_010: Filter by Guest Name Successfully @regression', async ({ request }
     expect(response.status()).toBe(200)
 
     const responseJSON: getAllBookings[] = await response.json()
-    console.log(responseJSON)
     // Verify that at least one result is returned and it contains our ID
     expect(responseJSON.length).toBeGreaterThan(0);
 })

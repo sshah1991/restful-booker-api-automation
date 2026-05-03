@@ -1,3 +1,4 @@
+import { AuthRequest } from "../models/AuthModel";
 import { CreateBookingRequest } from "../models/BookingModel";
 import { PutUpdate } from "../models/UpdateModel";
 
@@ -63,6 +64,13 @@ export class BookingTestData {
             firstname:"Babla",
             lastname:"Gabla"
         }
+    }
+
+    static getAdminCredentials(): AuthRequest {
+        return {
+            username: process.env.API_ADMIN_USER!,
+            password: process.env.API_ADMIN_PASS!
+        };
     }
 
 }
