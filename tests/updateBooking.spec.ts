@@ -8,6 +8,7 @@ import { BookingTestData } from "../utils/BookingTestData";
 import { PutUpdate } from "../models/UpdateModel";
 
 test.describe('Booking Update Operations', () => {
+
     // Variables declared in the describe scope so they are accessible to all tests
     let token: string;
     let bookingID: number;
@@ -55,9 +56,6 @@ test.describe('Booking Update Operations', () => {
         console.log(`VERIFICATION: Booking ${bookingID} updated to ${responseJSON.firstname} ${responseJSON.lastname}`);
     });
 
-    /**
-     * You can now easily add more tests without repeating the setup!
-     */
     test('TC_013: Update with Invalid Token should fail @regression', async ({ request }) => {
         const updateController = new UpdateBookingController(request);
         const updatePayload = BookingTestData.PUTValidBookingUpdatePayload();
@@ -67,4 +65,17 @@ test.describe('Booking Update Operations', () => {
         // Restful Booker typically returns 403 Forbidden for bad tokens
         expect(response.status()).toBe(403);
     });
+
+    test('TC_015: Partial Update (PATCH) Successfully @sanity',async({request})=>{
+         const updateBookingControler= new UpdateBookingController(request)
+         const payload= BookingTestData.ValidPatchPayload()
+         const response= await updateBookingControler.updateUsingPATCH(bookingID,token,payload)
+         expect(response.status()).toBe(200)
+
+         const response_JSON: CreateBookingRequest= await response.json()
+         expect(response_JSON.firstname).toBe('Babla')
+         console.log(response_JSON.firstname)
+
+    })
+    
 });

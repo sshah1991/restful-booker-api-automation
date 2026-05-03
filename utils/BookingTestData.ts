@@ -1,9 +1,10 @@
 import { CreateBookingRequest } from "../models/BookingModel";
+import { PutUpdate } from "../models/UpdateModel";
 
-export class BookingTestData{
+export class BookingTestData {
 
-    static getValidBookingPayload(): CreateBookingRequest{
-        return{
+    static getValidBookingPayload(): CreateBookingRequest {
+        return {
             firstname: "Sumeet",
             lastname: "Shah",
             totalprice: 150,
@@ -30,8 +31,8 @@ export class BookingTestData{
         };
     }
 
-    static getMandatotyFeildMissingPayload(){
-        return{
+    static getMandatotyFeildMissingPayload() {
+        return {
             lastname: "Shah",
             totalprice: 150,
             depositpaid: true,
@@ -43,8 +44,8 @@ export class BookingTestData{
         };
     }
 
-    static PUTValidBookingUpdatePayload(): CreateBookingRequest{
-        return{
+    static PUTValidBookingUpdatePayload(): CreateBookingRequest {
+        return {
             firstname: "Abla",
             lastname: "Tabla",
             totalprice: 150,
@@ -55,6 +56,13 @@ export class BookingTestData{
             },
             additionalneeds: "Breakfast"
         };
+    }
+
+    static ValidPatchPayload(): Partial<PutUpdate> {
+        return{
+            firstname:"Babla",
+            lastname:"Gabla"
+        }
     }
 
 }
