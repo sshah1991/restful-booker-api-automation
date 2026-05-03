@@ -1,0 +1,38 @@
+Sending POST request to generate auth token with credentials: 
+{
+  "username": "admin",
+  "password": "password123"
+}
+Received token: 4142f42fd15405c
+Sending POST request to create initial booking with payload: 
+{
+  "firstname": "Sumeet",
+  "lastname": "Shah",
+  "totalprice": 150,
+  "depositpaid": true,
+  "bookingdates": {
+    "checkin": "2026-05-01",
+    "checkout": "2026-05-10"
+  },
+  "additionalneeds": "Breakfast"
+}
+Created booking ID: 5056
+****************Executing TC: 'TC_015'************
+Sending PATCH request to update booking ID 5056 with payload: 
+{
+  "firstname": "Babla",
+  "lastname": "Gabla"
+}
+Response status: 200
+Received updated booking details: 
+{
+  "firstname": "Babla",
+  "lastname": "Gabla",
+  "totalprice": 150,
+  "depositpaid": true,
+  "bookingdates": {
+    "checkin": "2026-05-01",
+    "checkout": "2026-05-10"
+  },
+  "additionalneeds": "Breakfast"
+}

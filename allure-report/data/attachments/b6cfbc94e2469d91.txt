@@ -1,0 +1,29 @@
+****************Executing TC: 'TC_005'************
+Sending POST request to create booking for schema validation with payload: 
+{
+  "firstname": "Sumeet",
+  "lastname": "Shah",
+  "totalprice": 150,
+  "depositpaid": true,
+  "bookingdates": {
+    "checkin": "2026-05-01",
+    "checkout": "2026-05-10"
+  },
+  "additionalneeds": "Breakfast"
+}
+Response status: 200
+Validating schema for response: 
+{
+  "bookingid": 5034,
+  "booking": {
+    "firstname": "Sumeet",
+    "lastname": "Shah",
+    "totalprice": 150,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-05-01",
+      "checkout": "2026-05-10"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
