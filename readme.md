@@ -54,6 +54,18 @@ API_ADMIN_USER=your_admin_user
 API_ADMIN_PASS=your_admin_password
 ```
 
+### 🧠 Framework Strategy & Coverage
+<img width="937" height="688" alt="Restful-Booker Framework" src="https://github.com/user-attachments/assets/7c929c7a-fdff-4fa5-aa70-ed47e487de1e" />
+
+### Framework Architecture
+<img width="1135" height="459" alt="Modern SDET DevOps Workflow" src="https://github.com/user-attachments/assets/05448d17-b1f2-4ce1-af85-05d7aab6ded4" />
+
+### API Test Coverage
+<img width="977" height="597" alt="API Test Coverage" src="https://github.com/user-attachments/assets/2f29b111-6849-4491-91e4-e51687aee72f" />
+
+
+
+
 ## 🧪 Running Tests
 
 We use tags to categorize the test suite for efficient execution via NPM scripts:
