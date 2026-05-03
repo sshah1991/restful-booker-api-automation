@@ -5,6 +5,7 @@ import { BookingTestData } from "../utils/BookingTestData";
 import { CreateBookingResponse } from "../models/BookingModel";
 import test, { expect } from "playwright/test";
 import { CreateBookingRequest } from "../models/BookingModel";
+import { request } from "playwright-extra";
 
 
 test('TC_007: List All Bookings Successfully @sanity', async ({ request }) => {
@@ -45,4 +46,15 @@ test('TC_009: Invalid ID Search Successfully @regression',async({request})=>{
     console.log(responsetext)
     
 
+})
+
+test('TC_010: Filter by Guest Name Successfully @regression',async({request})=>{
+    const getBookingController= new GetBookingController(request)
+    const response= await getBookingController.getBookingByFirstName('Sumeet')
+    expect(response.status()).toBe(200)
+
+    const responseJSON: getAllBookings[]= await response.json()
+    console.log(responseJSON)
+    // Verify that at least one result is returned and it contains our ID
+    expect(responseJSON.length).toBeGreaterThan(0);
 })
